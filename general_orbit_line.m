@@ -1,4 +1,4 @@
-function coor = general_orbit_line(a, e, i)
+function coor = general_orbit_line(a, e, i) % GENERATE A SPECIFIC ORBITAL LINE GIVEN SEMI MAJOR, ECCENTRICITY AND INCLINATION
 semi_major_axis = a; % Semi-major axis (in kilometers)
 eccentricity = e;      % Orbital eccentricity
 inclination = i;        % Inclination (in degrees)

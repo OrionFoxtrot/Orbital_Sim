@@ -7,8 +7,8 @@ u_earth = 3.986*10^14;
         % E_r = ECI R vector of craft
         % E_v = ECI V vector of craft
         % H =
-        E_r = R{1}
-        E_v = V{1}
+        E_r = R{1};
+        E_v = V{1};
 
         E_h = cross(E_r, E_v);
     

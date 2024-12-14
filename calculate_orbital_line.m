@@ -1,4 +1,4 @@
-function coords = calculate_orbital_line(orb_el)
+function coords = calculate_orbital_line(orb_el) %Given 6 ORBITAL ELEMENTS, CALCULATE the 3D LINE THE ORBIT LIES UPON
 
 % Orbital elements
 a = orb_el.a;          % Semi-major axis in km
@@ -51,8 +51,8 @@ x = positions(1, :);
 y = positions(2, :);
 z = positions(3, :);
 
-r_periapsis = orb_el.a * (1-orb_el.eccentricity_value)
-6378100 - r_periapsis
+% r_periapsis = orb_el.a * (1-orb_el.eccentricity_value)
+% 6378100 - r_periapsis
 p.x = x;
 p.y = y;
 p.z = z;
