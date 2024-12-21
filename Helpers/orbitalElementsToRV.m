@@ -1,12 +1,12 @@
 function [R, V] = orbitalElementsToRV(p, mu) %GIVEN ORBITAL ELEMENTS, CONVERT THEM INTO E_R and E_V VECTORS OF A SPACECRAFT
 % INPUTS:
-% a      : Semi-major axis (km)
+% a      : Semi-major axis (m)
 % e      : Eccentricity
 % i      : Inclination (radians)
 % RAAN   : Right Ascension of Ascending Node (radians)
 % omega  : Argument of Periapsis (radians)
 % nu     : True Anomaly (radians)
-% mu     : Standard gravitational parameter (km^3/s^2)
+% mu     : Standard gravitational parameter (m^3/s^2)
 
 a = p.a;
 e = p.eccentricity_value;
