@@ -3,11 +3,11 @@ addpath("Plotting_Funs\");
 addpath("Helpers\")
 c = constants();
 
-E_r = [ 34205.52*10^3;
+E_r_0 = [ 34205.52*10^3;
     -31532.42*10^3;
     -14872.82*10^3;
     ];
-E_v = [ 2.970126*10^3;
+E_v_0 = [ 2.970126*10^3;
     -0.22070*10^3;
     -1.291448*10^3;
     ];
@@ -22,27 +22,10 @@ p.True_Anomoly = 100;
 
 % [E_r,E_v] = OrbitalElementsToRV2(p.a,p.eccentricity_value,p.inclination,p.RAAN,p.argument,p.True_Anomoly ...
     % ,c.u_earth);
-[E_r,E_v] = orbitalElementsToRV(p,c.u_earth)
+[E_r,E_v] = orbitalElementsToRV(p,c.u_earth);
 
+s_test1 = [[E_r,E_v],[E_r_0,E_v_0]];
+s_test2 = [[E_r,E_v]];
 
-
-close all
-r_earth = c.r_earth;
-[x,y,z] = sphere;
-x = x*r_earth;
-y = y*r_earth;
-z = z*r_earth;
-
-surf(x,y,z,DisplayName='Earth') %Plot Earth
-hold on
-plot_spacecraft_orbit(E_r,E_v)
-% plot_general_orbit(r_earth+1e7,0,0)
-% plot3 ( [0;ecis.x],[0;ecis.y],[0;ecis.z] )
-% legend()
-
-axis equal
-title('Orbit')
-xlabel('X (m)');
-ylabel('Y (m)');
-zlabel('Z (m)');
-hold off
+o_test1 = [p.a-5e7,p.eccentricity_value,p.inclination+30];
+plot_earth_orbits(s_test1,o_test1,c)
