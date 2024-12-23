@@ -1,6 +1,6 @@
 # Orbital Simulation Tools
 
-Welcome to the **Orbital Simulation Toolkit**! This project is a comprehensive simulation framework designed for analyzing and visualizing orbital mechanics. Whether you're a student, researcher, or space enthusiast, this toolkit offers powerful tools to model spacecraft trajectories, calculate orbital parameters, and create visualizations of orbits.
+Welcome to the **Orbital Simulation Tool**! This project is a comprehensive simulation framework designed for analyzing and visualizing orbital mechanics. Whether you're a student, researcher, or space enthusiast, this toolkit offers powerful tools to model spacecraft trajectories, calculate orbital parameters, and create visualizations of orbits.
 
 ## Features
 
@@ -28,7 +28,8 @@ Ensure you have the following installed:
 - Select the folders *Animation_Driver*, *Helpers* and *Plotting_Funs* in the Current Folder tab in Matlab, Right click it and add the folders to the Path.
 
 ### Basic Example
-'''
+This basic example defines two spacecraft with two orbits and one general orbit. One eccentric orbit defined by location and velocity of a spacecraft, and another circular orbit defined by the 6 orbital parameters (Semi-Major Axis, Eccentricity, Inclination, RAAN, Argument, and the True Anomoly). The general orbit is one with no spacecraft defined, and this is defined by a semi-major axis, eccentricity and inclination. Then I plot these orbits. This sample is included as test_drive.m 
+```
 % Define initial position and velocity vectors
 E_r_0 = [ 34205.52*10^3;
           -31532.42*10^3;
@@ -53,12 +54,14 @@ p.True_Anomoly = 100;
 
 % Create test state arrays
 s_test1 = [[E_r, E_v], [E_r_0, E_v_0]];
-s_test2 = [[E_r, E_v]];
 
 % Define modified orbital parameters for plotting
 o_test1 = [p.a - 5e7, p.eccentricity_value, p.inclination + 30];
 
-% Plot the orbits
+% Plot the orbits (Statically)
 plot_earth_orbits(s_test1, o_test1, c);
 
-'''
+% OR Animate the Orbits using the following line, Comment out the line before this. 
+% animate_earth_orbits(s_test1);
+```
+
