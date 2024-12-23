@@ -29,3 +29,22 @@ s_test2 = [[E_r,E_v]];
 
 o_test1 = [p.a-5e7,p.eccentricity_value,p.inclination+30];
 plot_earth_orbits(s_test1,o_test1,c)
+
+
+%%
+clear; clc;
+addpath("Plotting_Funs\");
+addpath("Helpers\")
+c = constants();
+
+p = [];
+p.a = 42164e3;
+p.eccentricity_value = 0;
+p.inclination = 0;
+p.RAAN = 100;
+p.argument = 100; % Arg of Periapsis
+p.True_Anomoly = 100;
+
+[E_r,E_v] = orbitalElementsToRV(p,c.u_earth)
+
+plot_earth_orbits([E_r,E_v],[],c)

@@ -25,5 +25,12 @@ function const = constants()
     const.r_uranus = 25362000; 
     const.r_neptune = 24622000;
 
+    % Circular Earth Orbit
+    Circular_orb_E_r = 1.0e+07*[2.1082;-3.6515;0];
+    Circular_orb_E_v = 1.0e+03*[2.6627;1.5373;0];
+    const.Earth_GEO_Orbit = [];
+    const.Earth_GEO_Orbit.E_r = Circular_orb_E_r;
+    const.Earth_GEO_Orbit.E_v = Circular_orb_E_v;
+
 
 end

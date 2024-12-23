@@ -1,0 +1,73 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{subfig}
+\usepackage{indentfirst}
+\usepackage{amsmath}
+\usepackage[verbose]{placeins} 
+\usepackage{float}
+\usepackage[top=2cm, bottom=2cm, right=2cm, left=2cm]{geometry}
+
+% Title Page
+\title{Orbital Simulator \\
+	\large{Analytical Matlab Code to Simulate Orbital Spacecraft }}
+\author{Mark Lohatepanont}
+
+
+
+
+\begin{document}
+	\maketitle
+	\tableofcontents
+	\newpage
+	\section{Introduction}
+	The Orbital Simulator project is centered on accurately modeling and visualizing the orbital mechanics of spacecraft. This involves integrating concepts from fundamental physics, geometry, and software engineering to create a robust and flexible environment in which to study orbits, spacecraft trajectories, and gravitational interactions. The current phase focuses on establishing the core mathematical framework, verifying physics models, and ensuring that the simulation’s architecture can be easily extended for future enhancements, such as advanced spacecraft maneuvers, mission planning, and data visualization.
+	
+	By leveraging physics-based calculations—particularly Newtonian gravity and Kepler’s laws of planetary motion aims to serve both educational and research purposes. Whether it is used to illustrate basic orbital parameters for students or to investigate multi-body interactions for more advanced analysis, the software strikes a balance between accuracy, and ease of use.
+	
+	\section{Current Features/File List}
+	
+
+	\subsection{\texttt{calculate\_orbital\_elements.m}}
+	This script computes orbital elements from the position (\texttt{$E_r$}) and velocity (\texttt{$E_v$}) vectors of a spacecraft. It calculates the following parameters:
+	\begin{itemize}
+		\item Inclination
+		\item Eccentricity
+		\item Semi-major axis
+		\item True anomaly
+		\item Right Ascension of Ascending Node (RAAN)
+		\item Argument of periapsis
+	\end{itemize}
+	
+	\subsection{\texttt{calculate\_orbital\_line.m}}
+	This script generates a 3D orbital path using six orbital elements.
+	It outputs coordinates defining the orbital line in space.
+	
+	\subsection{\texttt{general\_orbit\_line.m}}
+	This script creates a 3D orbital line based on the semi-major axis, eccentricity, and inclination. It returns 3D coordinates (\texttt{x}, \texttt{y}, \texttt{z}) of the orbit in space.
+	
+	\subsection{\texttt{Orbital\_Time\_Period.m}}
+	This script calculates the orbital period of a spacecraft using its position (\texttt{$E_r$}), velocity (\texttt{$E_v$}), and the gravitational parameter of a celestial body (e.g., Earth).
+	
+	\subsection{\texttt{orbitalElementsToRV.m}}
+	This script converts orbital elements (semi-major axis, eccentricity, inclination, RAAN, argument of periapsis, and true anomaly) into position (\texttt{$E_r$}) and velocity (\texttt{$E_v$}) vectors in the Earth-Centered Inertial (ECI) frame.
+	
+	\subsection{\texttt{OrbitalElementsToRV2.m}}
+	This script performs a similar task as \texttt{orbitalElementsToRV.m}, converting orbital elements to position and velocity vectors in the ECI frame. However, it is marked as deprecated and is mainly used for debugging.
+	
+	\subsection{\texttt{perifocal2ECI.m}}
+	This script transforms coordinates from the perifocal frame (orbital plane) to the equatorial (Earth-Centered Inertial) frame using rotation matrices based on inclination, RAAN, and the argument of periapsis.
+	
+	\subsection{\texttt{plot\_earth\_orbits.m}}
+	This script plots orbits around Earth, including spacecraft trajectories and general orbital paths. It can visualize multiple orbits with details such as semi-major axis, eccentricity, and inclination.
+	
+	\subsection{\texttt{plot\_general\_orbit.m}}
+	This script visualizes a general orbital path in 3D space based on the semi-major axis, eccentricity, and inclination by calling the \texttt{general\_orbit\_line} function.
+	
+	\subsection{\texttt{plot\_spacecraft\_orbit.m}}
+	This script plots the orbital trajectory of a spacecraft in 3D space using its position and velocity vectors. It computes orbital elements and uses the \texttt{calculate\_orbital\_line} function for the trajectory.
+	
+	
+	
+\end{document}  
+
+

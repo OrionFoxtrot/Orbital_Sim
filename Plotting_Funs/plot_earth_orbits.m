@@ -1,10 +1,11 @@
-function flag = plot_earth_orbits(spacecraft, orbits, c)
+function flag = plot_earth_orbits(spacecraft, orbits)
     % INPUTS:
     % spacecraft : Spacecraft Definitions. Array. Series of [[E_r,E_v],...]
     % orbits     : Orbital Definitions. Only consists of [[a,e,i],...]
     %              a - semi-major axis, e - eccentricity, i - inclination
     close all
     hold on
+    c = constants();
     % figure;
     % spacecraft(1:i)
     
