@@ -1,5 +1,6 @@
 function orb = calculate_orbital_elements(varargin)
-u_earth = 3.986*10^14;
+    c = constants();
+    u_earth = c.u_earth;
     if nargin == 2
         R = varargin(1);
         V = varargin(2);

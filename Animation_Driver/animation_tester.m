@@ -56,6 +56,6 @@ E_v = [ 2.970126*10^3;
     -1.291448*10^3;
     ];
 
-
 test0 = [[E_r, E_v], [c.Earth_GEO_Orbit.E_r, c.Earth_GEO_Orbit.E_v]];
+test1 = Spacecraft(100,E_r,E_v);
 animate_earth_orbits(test0)

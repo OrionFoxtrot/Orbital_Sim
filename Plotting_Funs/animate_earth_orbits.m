@@ -1,4 +1,5 @@
 function flag = animate_earth_orbits(spacecraft)
+    % ANIMATES THE STATIC ORBITS OF SPACECRAFTS
     % INPUTS:
     % spacecraft : Spacecraft Definitions. Array. Series of [[E_r,E_v],...]
     close all
@@ -70,13 +71,14 @@ function flag = animate_earth_orbits(spacecraft)
             E_v = E_vs(:,j:j+2);
 
             [E_cord, E_line] = plot_spacecraft_orbit(E_r(i,:)', E_v(i,:)',1,0);
-            z1 = plot3(E_cord(1), E_cord(2), E_cord(3), ...
-                'o','MarkerSize',6,'MarkerFaceColor','g','color','g');
-            z2 = plot3(E_line(:,1),E_line(:,2), E_line(:,3),'color','r');
-                
-            z3 = text(E_cord(1), E_cord(2), E_cord(3),sprintf('Spacecraft %d',k));
 
-            h = [h, z1, z2, z3];
+            z1 = plot3(E_cord(1), E_cord(2), E_cord(3), ... % Plot the Coordinate of the Spacecraft
+                'o','MarkerSize',6,'MarkerFaceColor','g','color','g');
+            z2 = plot3(E_line(:,1),E_line(:,2), E_line(:,3),'color','r'); % Plot the Orbital Line for each Spacecraft
+                
+            z3 = text(E_cord(1), E_cord(2), E_cord(3),sprintf('Spacecraft %d',k)); % Plot the textpoint
+
+            h = [h, z1, z2, z3]; % Delete the lines to prime the next 
             j = j+3;
             k = k+1;
         end
@@ -94,4 +96,5 @@ function flag = animate_earth_orbits(spacecraft)
     zlabel('Z (m)');
     hold off
     
+    flag = 1;
 end

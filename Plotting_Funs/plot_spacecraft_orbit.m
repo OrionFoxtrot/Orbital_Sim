@@ -1,9 +1,10 @@
 function [orbit_coords, orbital_line] = plot_spacecraft_orbit (E_r, E_v,num, plot_flag, varargin)
 
-% kk = nargin
+% If plotflag = 1; plot the stuff; if Plotflag = 0; Dont plot It
 if(nargin <= 3)
     plot_flag = 1;
 end
+% plot_flag
 
 orb_el = calculate_orbital_elements(E_r,E_v);
 % orb_el.a
