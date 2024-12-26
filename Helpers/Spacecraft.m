@@ -13,12 +13,12 @@ classdef Spacecraft
         % Prograde/Retrograde V, -V
         % Normal In/Out Cross(R,V), - Cross(R,V)
 
-        RadialIn 
-        RadialOut
+        radialIn 
+        radialOut
         Prograde
         Retrograde
         Normal
-        AntiNormal
+        antiNormal
 
         p % Orbital Elements Struct
         a % Semi-Major Axis
@@ -57,7 +57,7 @@ classdef Spacecraft
                 end
             end
 
-            [obj.RadialIn,obj.RadialOut,obj.Prograde,obj.Retrograde, obj.Normal, obj.AntiNormal] ...
+            [obj.radialIn,obj.radialOut,obj.Prograde,obj.Retrograde, obj.Normal, obj.antiNormal] ...
                 = calculate_directions(obj.E_r, obj.E_v);
 
             [obj.p,obj.a,obj.e,obj.i, obj.RAAN,obj.Argument, obj.True_Anomoly] ...
@@ -105,11 +105,11 @@ classdef Spacecraft
             ScalingK = 5e7; %Scaling for the matlab quiver cuz the matlab quiver sucks
             spacecraft.Normal = spacecraft.Normal.*ScalingK;
             spacecraft.Prograde = spacecraft.Prograde.*ScalingK;
-            spacecraft.RadialIn = spacecraft.RadialIn.*ScalingK;
+            spacecraft.radialIn = spacecraft.radialIn.*ScalingK;
 
             h1 = quiver3(s_x,s_y,s_z,spacecraft.Normal(1),spacecraft.Normal(2),spacecraft.Normal(3),"DisplayName","Normal");
             h2 = quiver3(s_x,s_y,s_z,spacecraft.Prograde(1),spacecraft.Prograde(2),spacecraft.Prograde(3),"DisplayName","Prograde");
-            h3 = quiver3(s_x,s_y,s_z,spacecraft.RadialIn(1),spacecraft.RadialIn(2),spacecraft.RadialIn(3),"DisplayName","RadialIn");
+            h3 = quiver3(s_x,s_y,s_z,spacecraft.radialIn(1),spacecraft.radialIn(2),spacecraft.radialIn(3),"DisplayName","RadialIn");
             legend([h1,h2,h3])
             hold off
 

@@ -63,5 +63,6 @@ p.argument = 100; % Arg of Periapsis
 p.True_Anomoly = 100;
 
 [E_r,E_v] = orbitalElementsToRV(p,c.u_earth)
+mooncraft = Spacecraft(c.m_moon, c.Moon_Orbit.E_r,c.Moon_Orbit.E_v)
 
-plot_earth_orbits([E_r,E_v],[],c)
+plot_earth_orbits([Spacecraft(100,E_r,E_v), mooncraft],[])
