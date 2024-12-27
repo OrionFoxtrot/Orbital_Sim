@@ -1,4 +1,4 @@
-function flag = plot_earth_orbits(spacecrafts, orbits)
+function plot_earth_orbits(spacecrafts, orbits)
     % INPUTS:
     % spacecrafts : Spacecraft Definitions. Array. Series of [Spacecraft1,Spacecraft2,...]
     % orbits     : Orbital Definitions. Only consists of [[a,e,i],...]
@@ -26,13 +26,14 @@ function flag = plot_earth_orbits(spacecrafts, orbits)
     
     if(~isempty(spacecrafts))
         for i = 1:length(spacecrafts)
-            
+           
             E_r = spacecrafts(i).E_r;
             E_v = spacecrafts(i).E_v;
             plot_spacecraft_orbit(E_r,E_v,i);
             
         end
     end
+    
     if(~isempty(orbits))
         i = 1;
         j = 1;

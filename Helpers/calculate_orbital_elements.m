@@ -8,6 +8,7 @@ function orb = calculate_orbital_elements(varargin)
         % E_r = ECI R vector of craft
         % E_v = ECI V vector of craft
         % H =
+        
         E_r = R{1};
         E_v = V{1};
 

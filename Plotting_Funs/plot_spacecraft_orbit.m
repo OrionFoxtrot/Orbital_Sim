@@ -8,7 +8,7 @@ end
 
 orb_el = calculate_orbital_elements(E_r,E_v);
 % orb_el.a
-% orb_el.eccentricity_value
+% orb_el.eccentrcity_value
 % orb_el.inclination
 % orb_el.RAAN
 % orb_el.argument
@@ -23,7 +23,11 @@ coo = calculate_orbital_line(orb_el);
 
 if(plot_flag)
     plot3(E_r(1), E_r(2), E_r(3),'o','MarkerSize',6,'MarkerFaceColor','r','HandleVisibility','off') %Plot Specific Spacecraft Location
+    
     plot3(coo.x,coo.y,coo.z,'DisplayName',sprintf('Spacecraft Orbit %i',num)) %Plot specific spacecraft orbit
+    % plot3(coo.x,coo.y,coo.z,'o','MarkerSize',25) %Debug Point
+
+    
     % E_v = 10e3*E_v;
     % quiver3(E_r(1), E_r(2), E_r(3), E_v(1), E_v(2), E_v(3)) %Plot Velocity
     v1 = [0 0 0];

@@ -56,13 +56,30 @@ c = constants();
 
 p = [];
 p.a = 42164e3;
-p.eccentricity_value = 0;
+p.eccentricity_value = 0.69;
 p.inclination = 0;
-p.RAAN = 100;
-p.argument = 100; % Arg of Periapsis
+p.RAAN = 10;
+p.argument = 10; % Arg of Periapsis
 p.True_Anomoly = 100;
 
-[E_r,E_v] = orbitalElementsToRV(p,c.u_earth)
-mooncraft = Spacecraft(c.m_moon, c.Moon_Orbit.E_r,c.Moon_Orbit.E_v)
+[E_r,E_v] = orbitalElementsToRV(p,c.u_earth);
 
-plot_earth_orbits([Spacecraft(100,E_r,E_v), mooncraft],[])
+
+plot_earth_orbits([Spacecraft(100,E_r,E_v)],[])
+hold on
+p2 = calculate_orbital_elements(E_r,E_v);
+r_p = p2.a * (1 - p2.eccentricity_value);
+r_a = p2.a * (1 + p2.eccentricity_value);
+
+peri = r_p * p2.eccentricity_vector/p2.eccentricity_value; % periapsis is inline with eccentricity vek 
+apo = - r_a * p2.eccentricity_vector/p2.eccentricity_value; % Apoapsis is inverted with eccentricity vek
+
+plot3(apo(1),apo(2),apo(3),'o','MarkerSize',10)
+plot3(peri(1),peri(2),peri(3),'o','MarkerSize',10)
+% hold on
+
+% animate_earth_orbits([Spacecraft(100,E_r,E_v)])
+
+
+
+mooncraft = Spacecraft(c.m_moon, c.Moon_Orbit.E_r,c.Moon_Orbit.E_v);

@@ -15,6 +15,12 @@ function [R, V] = orbitalElementsToRV(p, mu) %GIVEN ORBITAL ELEMENTS, CONVERT TH
     omega = deg2rad(p.argument);
     nu = deg2rad(p.True_Anomoly);
     
+    if(-1e-10<i && i < 1e-10) % If inclination is equitorial then RAAN and Omega are Undefined.
+        % So let's just make them 0. 
+        RAAN = 0;
+        omega = 0;
+    end
+    
     
     % Compute the orbital radius (r) and specific angular momentum (h)
     p = a * (1 - e^2); % Semi-latus rectum

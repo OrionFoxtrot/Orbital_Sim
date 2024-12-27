@@ -47,6 +47,7 @@ function final_spacecrafts = animate_earth_orbits(spacecrafts)
     % Animation Driver:
     
     hold on
+    axis equal
     surf(x,y,z,DisplayName='Earth') %Plot Earth
     % view([11 30])
     pause()
@@ -67,8 +68,8 @@ function final_spacecrafts = animate_earth_orbits(spacecrafts)
             z1 = plot3(E_cord(1), E_cord(2), E_cord(3), ... % Plot the Coordinate of the Spacecraft
                 'o','MarkerSize',6,'MarkerFaceColor','g','color','g');
             z2 = plot3(E_line(:,1),E_line(:,2), E_line(:,3),'color','r'); % Plot the Orbital Line for each Spacecraft
-                
-            z3 = text(E_cord(1), E_cord(2), E_cord(3),sprintf('Spacecraft %d',k)); % Plot the textpoint
+            
+            z3 = text(E_cord(1), E_cord(2), E_cord(3),sprintf('%s',spacecrafts(k).name)); % Plot the textpoint
 
             h = [h, z1, z2, z3]; % Delete the lines to prime the next 
             j = j+3;
@@ -81,8 +82,8 @@ function final_spacecrafts = animate_earth_orbits(spacecrafts)
         delete(h);
     end
     hold off
-    axis equal
-    title('Orbit')
+    
+    %title('Orbit')
     xlabel('X (m)');
     ylabel('Y (m)');
     zlabel('Z (m)');

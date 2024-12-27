@@ -29,39 +29,63 @@ classdef Spacecraft
         True_Anomoly %True Anomoly
 
         circular_flag % Is orbit Circular? ie, e = 0?, if so RAAN and Arg Undefined. 
+        name % Spacecraft Name
 
 
     end
     methods        
-        function obj = Spacecraft(m,r,v)
+        function obj = Spacecraft(m,r,v, name)
             c = constants();
             if nargin == 0 % No Args
                 obj.mass = 100; %100kg
                 obj.E_r = c.Earth_GEO_Orbit.E_r; % E_r of GEO in 3x1
                 obj.E_v = c.Earth_GEO_Orbit.E_v; % E_v of GEO in 3x1
+                obj.name = "Unnammed Spacecraft";
             end
             if nargin == 1 % Only Mass Arg
                 obj.mass = m;
                 obj.E_r = c.Earth_GEO_Orbit.E_r; % E_r of GEO in 3x1
                 obj.E_v = c.Earth_GEO_Orbit.E_v; % E_v of GEO in 3x1
+                obj.name = "Unnammed Spacecraft";
             end
             if nargin == 3 % Mass and State Arg
                 if (height(r) == 3 && width(v) == 1)
                     obj.mass = m;
                     obj.E_r = r; % E_r of custom in 3x1
                     obj.E_v = v; % E_v of custom in 3x1
+                    obj.name = "Unnammed Spacecraft";
+                else
+                    disp('Incorrect Dimentions of E_r or E_v, Requires 3x1 in form [x;y;z]')
+                    disp('defaulting to GEO spacecraft of mass 100kg')
+                    obj = Spacecraft();
+                end
+                
+            end
+            if nargin == 4 % Mass, State and Name
+                if (height(r) == 3 && width(v) == 1)
+                    obj.mass = m;
+                    obj.E_r = r; % E_r of custom in 3x1
+                    obj.E_v = v; % E_v of custom in 3x1
+                    obj.name = name;
                 else
                     disp('Incorrect Dimentions of E_r or E_v, Requires 3x1 in form [x;y;z]')
                     disp('defaulting to GEO spacecraft of mass 100kg')
                     obj = Spacecraft();
                 end
             end
+            
 
             [obj.radialIn,obj.radialOut,obj.Prograde,obj.Retrograde, obj.Normal, obj.antiNormal] ...
                 = calculate_directions(obj.E_r, obj.E_v);
 
             [obj.p,obj.a,obj.e,obj.i, obj.RAAN,obj.Argument, obj.True_Anomoly] ...
                 = update_orb_elements(obj.E_r,obj.E_v);
+
+            if(obj.e < 1e-3 && obj.i < 1e-3) %Correct RAAN and Arg for NaN.
+                obj.circular_flag = 0;
+                obj.RAAN = 0;
+                obj.Argument = 0;
+            end
 
 
         end
